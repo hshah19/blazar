@@ -1,7 +1,7 @@
-Climate architecture
+Blazar architecture
 ====================
 
-Climate design can be described by following diagram:
+Blazar design can be described by following diagram:
 
 .. image:: images/climate-architecture.png
     :width: 700 px
@@ -34,7 +34,7 @@ Virtual instance reservation
 Virtual instance reservation mostly looks like usual instance booting for user
 - he/she only passes special hints to Nova containing information about future
 lease - lease start and end dates, its name, etc. Special Nova API extensions
-parse these parameter and use them to call Climate, passing to it ID of just
+parse these parameter and use them to call Blazar, passing to it ID of just
 created instance. If there is a need to reserve all instances in cloud (like in
 developer labs to automate process of resource reclaiming), default reservation
 extension might be used. By default it starts lease at the moment of request
@@ -66,5 +66,5 @@ hosts. The time lease starts, user may use reserved compute capacity to run
 his/her instances on it passing special scheduler hint to Nova. When host is
 reserved, it’s not used for usual instance running, it might be used only when
 lease starts and only by passing reservation ID to Nova. That is implemented
-using special Nova Scheduler filter, that passes reservation ID to Climate and
+using special Nova Scheduler filter, that passes reservation ID to Blazar and
 checks if user really can use reserved compute capacity.
